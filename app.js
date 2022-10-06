@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const https = require("https");
 const bodyParser = require("body-parser");
@@ -7,7 +8,7 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+const API_KEY=process.env.API_KEY;
 app.get("/", function (req, res) {
     res.render("home")
 });
@@ -16,7 +17,7 @@ app.post("/weather", function (req, res) {
 
     const cityName=req.body.city;
     const unit="metric";
-    const url="https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=bb05774a8d17d4b9b85ba64181b7fc5b&units=metric"
+    const url="https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid="+API_KEY+"&units=metric"
     https.get(url,function(response){
         console.log(response.statusCode);
 
