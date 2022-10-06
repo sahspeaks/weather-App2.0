@@ -8,6 +8,11 @@
   },
   "author": "Abhi",
   "license": "ISC",
+  "engines": {
+    "node": "16.17.0"
+  },
+  "start": "node app.js",
+
   "dependencies": {
     "body-parser": "^1.20.0",
     "ejs": "^3.1.8",
